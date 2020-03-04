@@ -1,0 +1,98 @@
+html....
+
+
+function myfunction() {
+  let monthArray = [
+    "month",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  document.getElementById("month").innerHTML = "";
+
+  // month options dynamically
+
+  if (document.getElementById("year").value == new Date().getFullYear()) {
+    max_month = new Date().getMonth() + 1;
+
+    document.getElementById("month").innerHTML = "";
+
+    for (m = 0; m <= max_month; m++) {
+      let month_option = document.createElement("option");
+      month_option.value = m;
+      month_option.innerHTML = monthArray[m];
+      document.getElementById("month").appendChild(month_option);
+    }
+  } else {
+    for (m = 0; m < monthArray.length; m++) {
+      let month_option = document.createElement("option");
+      month_option.value = m;
+      month_option.innerHTML = monthArray[m];
+      document.getElementById("month").appendChild(month_option);
+    }
+  }
+}
+
+//getting days value from this function
+
+function getday() {
+  let max_day = 0;
+  if (
+    document.getElementById("year").value == new Date().getFullYear() &&
+    document.getElementById("month").value == new Date().getMonth() + 1
+  ) {
+    max_day = new Date().getDate();
+
+    // document.getElementById("day").innerHTML = "";
+    for (let j = 1; j <= max_day; j++) {
+      let day_option = document.createElement("option");
+      day_option.value = j;
+      day_option.innerHTML = j;
+      document.getElementById("day").appendChild(day_option);
+    }
+  } else {
+    // document.getElementById("day").innerHTML = "";
+    max_day = 31;
+    for (let j = 1; j <= max_day; j++) {
+      let day_option = document.createElement("option");
+      day_option.value = j;
+      day_option.innerHTML = j;
+      document.getElementById("day").appendChild(day_option);
+    }
+  }
+}
+===========================================================================================================
+
+<div class="dob_fileds selectbox">
+								<label>My birthdate is</label>
+								<p id="alert_birth" style="color: red;font-size: 13px;"></p>
+								<ul>
+									<li>
+										<select name="month" id="month" class="select month" onchange="getAge();getday()" >
+											<option value="month">Month</option>
+											
+										</select>
+									</li>
+									<li>
+										<select id="day" name="day" class="select day" onchange="getAge()" >
+											<option value="day">Day</option>
+										</select>
+									</li>
+
+									<li>
+										<select id="year" name="year" class="select year"  onchange="myfunction();getAge();getday()">
+											<option value = "year" >year</option>
+										</select>
+									</li>
+								</ul>
+							</div>
