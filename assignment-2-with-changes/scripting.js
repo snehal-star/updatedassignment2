@@ -25,13 +25,11 @@ function checkFirstName(){
         return false;
     }
     
-    // else{
-    //     document.getElementById("fname").style.visibility="hidden";
-    //     return true;
-    // }
-    document.getElementById("fname").style.visibility="hidden";
-    // isValid = true;
-    // return true;
+    else{
+        document.getElementById("fname").style.visibility="hidden";
+        return true;
+    }
+    
     
 }
 function checkLastname(){
