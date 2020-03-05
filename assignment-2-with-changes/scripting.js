@@ -191,33 +191,144 @@ function confirmPassword(){
          return true;
      }
 }
-function checkBdate() {
-	var dd = document.form1.day.value;
-	var mm =  document.form1.month.value;
-	var yyyy = document.form1.year.value;
 
-	var bDate = new Date(yyyy, mm, dd);
-	var today = new Date();
+// function checkBdate() {
+//     var yyyy = document.form1.year.value;
+//     console.log(yyyy);
+//     var currentDate=new Date;
 
-	if((bDate.getMonth()  != mm) || (bDate.getDate() != dd) ||
-			(bDate.getFullYear() != yyyy) || (bDate > today)) {
-
-				document.getElementById("date_error").style.visibility = "visible";
-				document.getElementById("date_error").innerHTML = "Please select valid date";
-				document.forms["form1"]["age"].value = "";
-				return false;
-	}
-	else {
-		var y = today.getFullYear() - bDate.getFullYear();
-		// var m = today.getMonth() - bDate.getMonth();
-		var age = y +" years";
-        document.forms["form1"]["age"].value = age;
+//     if(yyyy==currentDate.getFullYear()){
         
-		document.getElementById("date_error").style.visibility = "hidden";
-		return true;
-	}
+//     }
+//     var mm=document.form1.month.value;
+//     console.log(mm);
+    // if()
+    // <script type="text/javascript">
+	// 										var dt = new Date();
+	// 										var allMonths=[Jan,Feb,March,April,May,June,July,Aug,Sep,Oct,Nov,Dec];
+	// 										var MonthDateMap={Jan:31,Feb:29,March:31,
+	// 														  April:30,May:31,June:30,
+	// 														  july:31,Aug:31,Sep:30,
+	// 														  Oct:31,Nov:30,Dec:31
+	// 														}
+	// 										var Dates=[1,2,3,4,5,6,7,8,9,10,
+	// 													11,12,13,14,15,16,17,18,19,20,
+	// 													21,22,23,24,25,26,27,28,29,30,31];
+	// 										for(var i=0; i<=11; i++) {
+	// 											document.write("<option value = '"+i+"'>" +arr[i] +"</option>" );
+	// 										}
+	// 										</script> 
+	// var dd = document.form1.day.value;
+	// var mm =  document.form1.month.value;
+	// var yyyy = document.form1.year.value;
 
-}
+    // var bDate = new Date(yyyy, mm, dd);
+    // console.log(bdate);
+	// var today = new Date();
+
+	// if((bDate.getMonth()  != mm) || (bDate.getDate() != dd) ||
+	// 		(bDate.getFullYear() != yyyy) || (bDate > today)) {
+
+	// 			document.getElementById("date_error").style.visibility = "visible";
+	// 			document.getElementById("date_error").innerHTML = "Please select valid date";
+	// 			document.forms["form1"]["age"].value = "";
+	// 			return false;
+    // }
+    // if((bDate.getFullYear())==(today.getFullYear())){
+    //     var x=bDate.getMonth();
+    //     for(i=x;i<=11;i++)
+    //     {
+    //         document.getElementById("months").style.visibility="hidden";
+    //         document.forms["form1"]["age"].value = "";
+				
+    //     }
+    //     // return false;
+    // // document.getElementById("date_error").style.visibility = "visible";
+	// // 			document.getElementById("date_error").innerHTML = "do not select tomorrows date";
+	// // 			document.forms["form1"]["age"].value = "";
+	// // 			return false;
+    // }
+	// else {
+	// 	var y = today.getFullYear() - bDate.getFullYear();
+	// 	// var m = today.getMonth() - bDate.getMonth();
+	// 	var age = y +" years";
+    //     document.forms["form1"]["age"].value = age;
+        
+	// 	document.getElementById("date_error").style.visibility = "hidden";
+	// 	return true;
+	// }
+
+// }
+function myfunction() {
+    let monthArray = [
+      "month",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+  
+    document.getElementById("month").innerHTML = "";
+  
+    // month options dynamically
+  
+    if (document.getElementById("year").value == new Date().getFullYear()) {
+      max_month = new Date().getMonth() + 1;
+  
+      document.getElementById("month").innerHTML = "";
+  
+      for (m = 0; m <= max_month; m++) {
+        let month_option = document.createElement("option");
+        month_option.value = m;
+        month_option.innerHTML = monthArray[m];
+        document.getElementById("month").appendChild(month_option);
+      }
+    } else {
+      for (m = 0; m < monthArray.length; m++) {
+        let month_option = document.createElement("option");
+        month_option.value = m;
+        month_option.innerHTML = monthArray[m];
+        document.getElementById("month").appendChild(month_option);
+      }
+    }
+  }
+  
+  //getting days value from this function
+  
+  function getday() {
+    let max_day = 0;
+    if (
+      document.getElementById("year").value == new Date().getFullYear() &&
+      document.getElementById("month").value == new Date().getMonth() + 1
+    ) {
+      max_day = new Date().getDate();
+  
+      // document.getElementById("day").innerHTML = "";
+      for (let j = 1; j <= max_day; j++) {
+        let day_option = document.createElement("option");
+        day_option.value = j;
+        day_option.innerHTML = j;
+        document.getElementById("day").appendChild(day_option);
+      }
+    } else {
+      // document.getElementById("day").innerHTML = "";
+      max_day = 31;
+      for (let j = 1; j <= max_day; j++) {
+        let day_option = document.createElement("option");
+        day_option.value = j;
+        day_option.innerHTML = j;
+        document.getElementById("day").appendChild(day_option);
+      }
+    }
+  }
 function checkGender(){
     if(document.form1.radio[0].checked == false &&
 		document.form1.radio[1].checked == false) {
